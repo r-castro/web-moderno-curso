@@ -39,10 +39,19 @@
 <link rel="stylesheet" href="http://files.cod3r.com.br/curso-web/tree.css" />
 <script>
     document.querySelectorAll('[wm-folder]').forEach((folder) => {
+        const priorText = folder.innerHTML
+
         folder.onclick = function (e) {
             const ul = folder.nextElementSibling
             const d = ul.style.display
-            ul.style.display = d === 'none' ? 'block' : 'none'
+
+            if (d === 'none') {
+                ul.style.display = 'block'
+                folder.innerHTML = priorText
+            } else {
+                ul.style.display = 'none'
+                folder.innerHTML = priorText + '...'
+            }
         }
     })
 </script>
