@@ -1,24 +1,40 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Acessando Atributos #02</title>
+        <link rel="stylesheet" href="css/estilo.css" />
+    </head>
 
-<head>
-    <meta charset='UTF-8'>
-    <title>Acessando Atributos #02</title>
-    <link rel='stylesheet' href='css/estilo.css'>
-</head>
+    <body class="conteudo exercicio">
+        <div>
+            <label for="compras">Compras</label>
+            <ul id="compras" destino="escritório" data-urgencia="5" data-blabla="opa">
+                <li>Café</li>
+                <li>Água</li>
+                <li>Copo Descartável</li>
+            </ul>
+        </div>
+        <script>
+            const list = document.querySelector('div ul[destino="escritório"]')
+            console.log('Element "ul"................')
+            console.log('childNodes', list.childNodes)
+            console.log('destino', list.id)
+            console.log('getAttribute', list.getAttribute('destino'))
+            console.log('hasAttribute', list.hasAttribute('destino'))
+            list.setAttribute('destino', 'empresa')
+            list.setAttribute('status', 'aberto')
+            list.removeAttribute('destino')
+            console.log(list.dataset)
+            console.log(list.dataset.urgencia)
+            list.dataset.urgencia = 4
+            console.log(list.getAttribute('data-urgencia'))
 
-<body class='conteudo exercicio'>
-    <div>
-        <label for="compras">Compras</label>
-        <ul id="compras" destino='escritório' data-urgencia="5">
-            <li>Café</li>
-            <li>Água</li>
-            <li>Copo Descartável</li>
-        </ul>
-    </div>
-    <script>
-        // ...
-    </script>
-</body>
-
+            // cuidados
+            const label = document.querySelector('label')
+            console.log(label.for) // reserved work [js]
+            console.log(label.htmlFor)
+            console.log(label.getAttribute('for'))
+        </script>
+    </body>
 </html>
